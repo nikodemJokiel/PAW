@@ -14,7 +14,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Entry {
+model Post {
   id         Int       @id @default(autoincrement())
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
@@ -28,10 +28,10 @@ model Entry {
 }
 
 model Category {
-  id          Int     @id @default(autoincrement())
-  name        String  @db.VarChar(50)
-  description String  @db.VarChar(255)
-  etries      Entry[]
+  id          Int    @id @default(autoincrement())
+  name        String @db.VarChar(50)
+  description String @db.VarChar(255)
+  posts       Post[]
 }
 
 model Comment {
@@ -40,6 +40,6 @@ model Comment {
   updatedAt DateTime @updatedAt
   content   String   @db.Text
   author    String   @db.VarChar(50)
-  entry     Entry    @relation(fields: [entryId], references: [id])
-  entryId   Int
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    Int
 }
