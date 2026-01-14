@@ -1,7 +1,14 @@
 import styles from "./Post.module.scss";
 const posts = [
-    {id:1, title: "Tytuł 1", desription:"Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum", src:"src1.jpg", alt:"allt1"},
-    {id:2, title: "Tytuł 2", desription:"Lorem IpsumLorem IpsumLorem Ipsum DOLOR dsada", src:"src2.jpg", alt:"allt2"},
+    {id:1, title: "Tytuł 1", desription:"Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum" +
+            "Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum" +
+            "Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum" +
+            "Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum" +
+            "Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum" +
+            "Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum" +
+            "Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum" +
+            "", src:"img/sl2.jpg", alt:"allt1"},
+    {id:2, title: "Tytuł 2", desription:"Lorem IpsumLorem IpsumLorem Ipsum DOLOR dsada", src:"img/sl1.jpg", alt:"allt2"},
 ]
 
 export default function Post() {

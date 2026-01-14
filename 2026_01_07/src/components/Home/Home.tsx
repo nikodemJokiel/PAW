@@ -1,9 +1,9 @@
 import styles from "./Home.module.scss";
 
 const slider = [
-    { id: 1, src: "sl1.jpg" },
-    { id: 2, src: "sl2.jpg" },
-    { id: 3, src: "sl3.jpg" }
+    { id: 1, src: "img/sl1.jpg" },
+    { id: 2, src: "img/sl2.jpg" },
+    { id: 3, src: "img/sl3.jpg" }
 ];
 export default function Home(){
     return (
