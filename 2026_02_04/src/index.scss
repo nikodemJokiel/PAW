@@ -1,0 +1,39 @@
+:root {
+  --color-primary: #547792;
+  --color-secondary: #94B4C1;
+  --color-tertiary: #EAE0CF;
+  --color-bg: #ffffff;
+  --color-text: #020119;
+}
+
+[data-theme='dark'] {
+  --color-primary: #375a7f;
+  --color-bg: #222222;
+  --color-text: #dddddd;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  &::before, &::after{
+    box-sizing: border-box;
+  }
+}
+
+html{
+  font-size: 10px;
+  font-family: Roboto, sans-serif;
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+
+
