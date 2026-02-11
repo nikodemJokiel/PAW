@@ -1,0 +1,38 @@
+.Posts{
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .PostsPost{
+    width: 90%;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 10px;
+    border: 1px solid var(--color-primary);
+
+    .PostsPostTitle{
+      width: 80%;
+      margin: 20px 50px;
+      font-size: 3rem;
+    }
+
+    .PostsPostBody{
+      margin-left: 50px;
+      font-size: 2rem;
+      border-top: 1px solid var(--color-primary);
+      padding-top: 10px;
+      width: 90%;
+    }
+
+    .PostsPostLink{
+      margin-left: 50px;
+      padding: 10px 0;
+      font-size: 1.2rem;
+    }
+  }
+}
