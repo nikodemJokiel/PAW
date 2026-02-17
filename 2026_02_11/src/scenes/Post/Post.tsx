@@ -1,6 +1,4 @@
 import styles from "./Post.module.scss";
-import type {Post} from "../../types/Post/Post.ts";
-import {useEffect, useState} from "react";
 import {Link, useParams} from "react-router";
 import {usePost} from "../../hooks/usePost.ts";
 import {useUser} from "../../hooks/useUser.ts";
@@ -9,44 +7,9 @@ import {useComments} from "../../hooks/useComments.ts";
 export default function Post() {
     const {id} = useParams<{id: string}>();
 
-    /*
-    const [post, setPost] = useState<Post>()
-    //const [users, setUsers] = useState<Array<Post>>([])
-    const [isLoading, setIsLoading] = useState(false)
-    const [isError, setIsError] = useState(false)
-
-
-    useEffect(() => {
-        (() => {
-            setIsLoading(true)
-        })()
-        fetch('https://jsonplaceholder.typicode.com/posts/'+id)
-            .then(response => response.json())
-            .then((json: Post) => {
-                setPost(json);
-            })
-            .catch(() => {
-                setIsError(true)
-            })
-            .finally(() => {
-                setIsLoading(false)
-            })
-    }, [id]);
-    */
-
-/*
-    useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users/'+post?.userId)
-        .then(response => response.json())
-            .then((json))=>{
-
-        }
-    }, [id]);
-*/
-
-    const {data: post, isLoading, isError} = usePost(id!);
-    const{data: user} = useUser(post!.userId);
-    //const {data: comments} = useComments(id!);
+    const {data: post, isLoading, isError} = usePost(id);
+    const {data: user, isLoading: isUserLoading, isError: isUserError} = useUser(post?.userId);
+    const {data: comments, isLoading: isCommentsLoading, isError: isCommentsError} = useComments(id);
 
     return (
         <div className={styles.Posts}>
@@ -68,15 +31,28 @@ export default function Post() {
                         </div>
                     )}
                     {post != null && (
+                        <>
                         <div className={styles.PostsPost} key={post.id}>
                             <h5
                                 className={styles.PostsPostTitle}
                             >
                                 {post.title}
                             </h5>
-                            <h6 className={styles.PostsPostAuthor}>
-                                {user!.username}({user!.name})
-                            </h6>
+                            {isUserLoading && (
+                                <h6 className={styles.PostsPostAuthor}>
+                                    Ładowanie użytkownika...
+                                </h6>
+                            )}
+                            {isUserError && (
+                                <h6 className={styles.PostsPostAuthor}>
+                                    Błąd ładowania użytkownika...
+                                </h6>
+                            )}
+                            {!isUserLoading && !isUserError && user &&(
+                                <h6 className={styles.PostsPostAuthor}>
+                                    {user.username} ({user.name})
+                                </h6>
+                            )}
                             <p
                                 className={styles.PostsPostBody}
                             >
@@ -89,6 +65,25 @@ export default function Post() {
                                 Wróć do wszysktich postów
                             </Link>
                         </div>
+                        <div className={styles.PostsComments}>
+                            <h4 className={styles.PostsCommentsCount}>
+                                Comments ({comments?.length || 0 })
+                            </h4>
+                            {isCommentsLoading && (
+                                <div className={styles.PostsLoading}> Trwa ładowanie komentarzy...</div>
+                            )}
+                            {isCommentsError && (
+                                <div className={styles.PostsError}> Wystąpił nieoczekiwany błąd...</div>
+                            )}
+                            {!isCommentsLoading && !isCommentsError && comments?.map((comment) => (
+                                <div key={comment.id} className={styles.PostsCommentsComment}>
+                                    <h5 className={styles.PostsCommentsCommentTitle}> {comment.name}</h5>
+                                    <h6 className={styles.PostsCommentsCommentEmail}>( {comment.email} )</h6>
+                                    <div className={styles.PostsCommentsCommentBody}> {comment.body}</div>
+                                </div>
+                            ))}
+                        </div>
+                        </>
                     )}
                 </>
             )}

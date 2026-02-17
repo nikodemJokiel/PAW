@@ -3,29 +3,6 @@ import {Link} from "react-router";
 import {usePosts} from "../../hooks/usePosts.ts";
 
 export default function Posts() {
-/*
-    const [posts, setPosts] = useState<Array<Post>>([])
-    const [isLoading, setIsLoading] = useState(false)
-    const [isError, setIsError] = useState(false)
-
-    useEffect(() => {
-        (() => {
-            setIsLoading(true)
-        })()
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(response => response.json())
-            .then((json: Array<Post>) => {
-                setPosts(json)
-            })
-            .catch(() => {
-                setIsError(true)
-            })
-            .finally(() => {
-                setIsLoading(false)
-            })
-    }, []);
-*/
-
 
     const {data: posts, isLoading, isError} = usePosts();
 
@@ -43,12 +20,12 @@ export default function Posts() {
             )}
             {!isLoading && !isError && (
                 <>
-                    {posts.length === 0 && (
+                    {posts?.length === 0 && (
                         <div className={styles.PostsError}>
                             Brak wpisów...
                         </div>
                     )}
-                    {posts.map(p => (
+                    {posts?.map(p => (
                         <div className={styles.PostsPost} key={p.id}>
                             <h5
                                 className={styles.PostsPostTitle}

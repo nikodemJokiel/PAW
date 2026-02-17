@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router";
+import { Routes, Route } from "react-router";
 
 import './App.scss'
 import Categories from "./scenes/Categories/Categories.tsx";
@@ -7,8 +7,6 @@ import Posts from "./scenes/Posts/Posts.tsx";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import Post from "./scenes/Post/Post.tsx";
-import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 
 function App() {
 
@@ -16,12 +14,14 @@ function App() {
         <>
 
                 <NavBar />
+                <main>
                 <Routes >
                     <Route index element={<Home/>} />
                     <Route path={"/categories"} element={<Categories/>} />
                     <Route path={"/post"} element={<Posts/>} />
                     <Route path={"/post/:id"} element={<Post/>} />
                 </Routes>
+                </main>
                 <Footer />
 
         </>
