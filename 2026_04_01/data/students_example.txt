@@ -1,3 +1,0 @@
-1,Jan,Kowalski,21
-2,Anna,Nowak,22
-3,Piotr,Zieliński,20

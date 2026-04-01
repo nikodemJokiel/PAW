@@ -1,5 +1,0 @@
-Kursy:
--Informatyka
--Matematyka
--Chemia
--Ekonomia
