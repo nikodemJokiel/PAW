@@ -51,22 +51,4 @@ router.get('/:id/comments', async (req, res) => {
     }
 });
 
-router.post('/:id/comments', async (req, res) => {
-    try{
-        const id = parseInt(req.params.id);
-        const {user, content} = req.body;
-
-        const newComment = await prisma.comment.create({
-            data:{
-                postId: id,
-                user: user,
-                content: content
-            }
-        })
-        res.status(201).json(newComment);
-    }catch(error){
-        res.status(500).json({error: `Error adding comment ${error}`})
-    }
-})
-
 export default router;
